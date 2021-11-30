@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   background-color: white;
+  border-left: 1px solid #eaeaea ;
+  border-right: 1px solid #eaeaea;
 }
 
 .header {
@@ -20,7 +22,8 @@
   align-items: center;
   background-color: white;
   justify-content: flex-start;
-  padding: 0 1.3rem;
+  padding: 0 10%;
+  margin-top: 0.5rem;
   /* margin-right: 2rem; */
 }
 
@@ -29,6 +32,7 @@
   /* width: 80%; */
   height: 30%;
   background-color: #ff802e;
+  border-radius: 1vw;
 }
 
 .gaugeText {
@@ -115,6 +119,10 @@
 
 @media (min-width: 600px) {
   .context {
-    width: 375px;
+    width: 575px;
+  }
+
+  .code {
+    font-size: 1.4rem;
   }
 }

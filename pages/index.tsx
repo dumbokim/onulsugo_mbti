@@ -11,6 +11,15 @@ const Home: NextPage = () => {
   useEffect(() => {
     setRefresh(true);
   }, [page])
+
+  const animation0 = useSpring({
+    reset: refresh,
+    from: {opacity:0.3,},
+    to: {opacity:1, },
+    config:{duration: 500,
+    },
+  })
+
   const animation1 = useSpring({
     reset: refresh,
     from: {x:-70},
@@ -44,7 +53,7 @@ const Home: NextPage = () => {
   })
 
   const pageClick = () => {
-    page==1? setPage(2) :( page==2 ? setPage(3): setPage(4));
+    page==1? setPage(2) :( page==2 ? setPage(3): (page==3? setPage(4): setPage(5)));
   }
 
   return (
@@ -63,9 +72,16 @@ const Home: NextPage = () => {
             setPage(1);
           }}
           >시작하기</div>
-
-        </main>):(<main className={styles.main}>
-          <header className={styles.header}>
+        </main>): page==5? (
+        <main className={styles.main}>
+          <p className={styles.description}>
+            당신의 결과는 어쩌구~~
+          </p>
+        </main>) :(
+        <main className={styles.main}>
+          <animated.div className={styles.header}
+          style={{...animation0}}
+          >
             <div className={styles.gauge} 
             style={{
               width: page==1?'20%': page==2? '40%' : page==3? '60%': '80%',
@@ -78,9 +94,9 @@ const Home: NextPage = () => {
             ):  
             (page==3? (<div className={styles.gaugeText}>60%</div>): (<div className={styles.gaugeText}>80%</div>))
           )}
-          </header>
+          </animated.div>
           <div className={styles.question}>
-            <p className={styles.description}>{page}번재 문제</p>
+            <p className={styles.description}>{page}번째 문제</p>
             <p className={styles.description}>문제문제문제문제 입니당</p>
           </div>
           <div className={styles.answer}>
@@ -98,7 +114,6 @@ const Home: NextPage = () => {
             <animated.div className={styles.code}
             onClick={() => {
               pageClick();
-
             }}
             style={{
               ...animation2
@@ -107,17 +122,14 @@ const Home: NextPage = () => {
             <animated.div className={styles.code}
             onClick={() => {
               pageClick();
-
             }}
             style={{
               ...animation3,
-
             }}
             >3번째 답</animated.div>
             <animated.div className={styles.code}
             onClick={() => {
               pageClick();
-
             }}
             style={{
               ...animation4
