@@ -77,6 +77,16 @@ const Home: NextPage = () => {
           <p className={styles.description}>
             당신의 결과는 어쩌구~~
           </p>
+          <p className={styles.description}>
+            분리배출이 어려운 당신을 위해서!
+          </p>
+          
+            <div className={styles.code}><a
+           href="https://repolarkorea.com/"
+           target="_blank"
+           rel="noopener noreferrer"
+           style={{margin:'0'}}
+          ><div>오늘수거 이용하기</div></a></div>
         </main>) :(
         <main className={styles.main}>
           <animated.div className={styles.header}
