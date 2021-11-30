@@ -8,6 +8,12 @@ import {useSpring, animated} from 'react-spring';
 const Home: NextPage = () => {
   const [page, setPage] = useState(0);
   const [refresh, setRefresh] = useState(true);
+  const [first, setFirst] = useState(true);
+
+  useEffect(() => {
+    console.log('hi');
+  }, [first])
+
   useEffect(() => {
     setRefresh(true);
   }, [page])
@@ -85,19 +91,40 @@ const Home: NextPage = () => {
         </animated.div>): page==5? (
         <animated.div className={styles.main} 
         style={{...startAni}}>
-          <p className={styles.description}>
+          <div className={styles.question}><p className={styles.description}>
             당신의 결과는 어쩌구~~
           </p>
-          <p className={styles.description}>
-            분리배출이 어려운 당신을 위해서!
-          </p>
+          </div>
+          <div className={styles.answer}>
+            <p>
+              분리배출이 어려운 당신을 위해서!
+            </p>
+            <div className={styles.code}>
+                <a
+                href="https://repolarkorea.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{margin:'0'}}
+                >
+                  <div>오늘수거 이용하기</div>
+                </a>
+              </div>
+              <div className={styles.linkList}>
+                <a
+                href="https://www.instagram.com/today.collect/"
+                target="_blank"
+                rel="noopener noreferrer">
+                  <Image
+                        src="/instagram.png"
+                        alt="OnulSugo insta"
+                        width={70}
+                        height={70}
+                    />
+                </a>
+              </div>
+            </div>
           
-            <div className={styles.code}><a
-           href="https://repolarkorea.com/"
-           target="_blank"
-           rel="noopener noreferrer"
-           style={{margin:'0'}}
-          ><div>오늘수거 이용하기</div></a></div>
+            
         </animated.div>) :(
         <main className={styles.main}>
           <animated.div className={styles.header}
@@ -116,10 +143,18 @@ const Home: NextPage = () => {
             (page==3? (<div className={styles.gaugeText}>60%</div>): (<div className={styles.gaugeText}>80%</div>))
           )}
           </animated.div>
-          <div className={styles.question}>
-            <p className={styles.description}>{page}번째 문제</p>
-            <p className={styles.description}>문제문제문제문제 입니당</p>
-          </div>
+          <animated.div className={styles.question}
+          style={{...startAni}}
+          >
+            <div className={styles.indicator}>
+              <p >Q. {page}</p>
+            </div>
+            <div className={styles.desc}>
+              <p className={styles.description}>이런 쓰레기는</p>
+              <p className={styles.description}>어떻게 해야할까요?</p>
+            </div>
+           
+          </animated.div>
           <div className={styles.answer}>
             <animated.div
               onClick={() => {

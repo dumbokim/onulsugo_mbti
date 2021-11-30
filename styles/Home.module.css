@@ -80,6 +80,24 @@
   /* line-height: 1.5; */
   font-size: 1.5rem;
   text-align: center;
+  margin: 0.5rem 0;
+}
+
+.indicator {
+  display: flex;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: #ff802e;
+  flex: 1;
+  justify-content: center;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  justify-content: center;
 }
 
 .answer {
@@ -115,6 +133,12 @@
   margin-left: 0.5rem;
   align-items: center;
   display: flex;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: row;
+  
 }
 
 @media (min-width: 600px) {
