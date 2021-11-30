@@ -19,12 +19,14 @@
   flex: 0.2;
   align-items: center;
   background-color: white;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 0 1.3rem;
+  /* margin-right: 2rem; */
 }
 
 .gauge {
   display: flex;
-  width: 80%;
+  /* width: 80%; */
   height: 30%;
   background-color: #ff802e;
 }
@@ -98,12 +100,11 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.code:hover {
+/* .code:hover {
   width: 65%;
   font-size: 1.3rem;
-  /* margin-bottom: 1rem; */
-  /* background-color: aqua; */
-}
+  background-color: #ff802e;
+} */
 
 .logo {
   /* height: 1em; */
