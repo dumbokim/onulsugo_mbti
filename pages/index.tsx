@@ -65,15 +65,18 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.context}>
-        {page==0? (<main className={styles.main}>
+        {page==0? (<animated.div className={styles.main}
+        style={{...animation0,}}
+        >
           <div>오늘수거 분리배출 테스트</div>
           <div className={styles.code}
           onClick={() => {
             setPage(1);
           }}
           >시작하기</div>
-        </main>): page==5? (
-        <main className={styles.main}>
+        </animated.div>): page==5? (
+        <animated.div className={styles.main} 
+        style={{...animation0}}>
           <p className={styles.description}>
             당신의 결과는 어쩌구~~
           </p>
@@ -87,7 +90,7 @@ const Home: NextPage = () => {
            rel="noopener noreferrer"
            style={{margin:'0'}}
           ><div>오늘수거 이용하기</div></a></div>
-        </main>) :(
+        </animated.div>) :(
         <main className={styles.main}>
           <animated.div className={styles.header}
           style={{...animation0}}
