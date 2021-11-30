@@ -12,6 +12,14 @@ const Home: NextPage = () => {
     setRefresh(true);
   }, [page])
 
+  const startAni = useSpring({
+    reset: refresh,
+    from: {opacity:0.3,},
+    to: {opacity:1, },
+    config:{duration: 1000,
+    },
+  })
+
   const animation0 = useSpring({
     reset: refresh,
     from: {opacity:0.3,},
@@ -66,7 +74,7 @@ const Home: NextPage = () => {
 
       <div className={styles.context}>
         {page==0? (<animated.div className={styles.main}
-        style={{...animation0,}}
+        style={{...startAni,}}
         >
           <div>오늘수거 분리배출 테스트</div>
           <div className={styles.code}
@@ -76,7 +84,7 @@ const Home: NextPage = () => {
           >시작하기</div>
         </animated.div>): page==5? (
         <animated.div className={styles.main} 
-        style={{...animation0}}>
+        style={{...startAni}}>
           <p className={styles.description}>
             당신의 결과는 어쩌구~~
           </p>
