@@ -87,6 +87,7 @@
   display: flex;
   font-size: 1.5rem;
   text-align: center;
+  align-items: center;
   font-weight: bold;
   color: #ff802e;
   flex: 1;

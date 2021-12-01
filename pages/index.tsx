@@ -4,11 +4,13 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import {useSpring, animated} from 'react-spring';
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const [page, setPage] = useState(0);
   const [refresh, setRefresh] = useState(true);
   const [first, setFirst] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     console.log('hi');
@@ -67,7 +69,7 @@ const Home: NextPage = () => {
   })
 
   const pageClick = () => {
-    page==1? setPage(2) :( page==2 ? setPage(3): (page==3? setPage(4): setPage(5)));
+    page==1? setPage(2) :( page==2 ? setPage(3): (page==3? setPage(4): router.push('/result')));
   }
 
   return (
@@ -88,44 +90,7 @@ const Home: NextPage = () => {
             setPage(1);
           }}
           >시작하기</div>
-        </animated.div>): page==5? (
-        <animated.div className={styles.main} 
-        style={{...startAni}}>
-          <div className={styles.question}><p className={styles.description}>
-            당신의 결과는 어쩌구~~
-          </p>
-          </div>
-          <div className={styles.answer}>
-            <p>
-              분리배출이 어려운 당신을 위해서!
-            </p>
-            <div className={styles.code}>
-                <a
-                href="https://repolarkorea.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{margin:'0'}}
-                >
-                  <div>오늘수거 이용하기</div>
-                </a>
-              </div>
-              <div className={styles.linkList}>
-                <a
-                href="https://www.instagram.com/today.collect/"
-                target="_blank"
-                rel="noopener noreferrer">
-                  <Image
-                        src="/instagram.png"
-                        alt="OnulSugo insta"
-                        width={70}
-                        height={70}
-                    />
-                </a>
-              </div>
-            </div>
-          
-            
-        </animated.div>) :(
+        </animated.div>):(
         <main className={styles.main}>
           <animated.div className={styles.header}
           style={{...animation0}}
@@ -192,6 +157,10 @@ const Home: NextPage = () => {
             }}
             >4번째 답</animated.div>
           </div>
+          <p className={styles.indicator}
+          style={{fontSize:'1.1rem',
+        }}
+          >{page==4? `마지막 문제입니다!` : `${5-page}문제 남았습니다!`}</p>
         </main>)}
 
         <footer className={styles.footer}>
