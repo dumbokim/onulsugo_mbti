@@ -6,11 +6,13 @@ import { useState, useEffect } from "react";
 import {useSpring, animated} from 'react-spring';
 import {useRouter} from "next/router";
 
-const Home: NextPage = () => {
+const ResultPage: NextPage = () => {
   const [page, setPage] = useState(0);
   const [refresh, setRefresh] = useState(true);
   const [first, setFirst] = useState(true);
   const router = useRouter();
+
+  const {id} = router.query;
 
   useEffect(() => {
     console.log('hi');
@@ -83,9 +85,15 @@ const Home: NextPage = () => {
       <div className={styles.context}>
       <animated.div className={styles.main} 
         style={{...startAni}}>
-          <div className={styles.question}><p className={styles.description}>
-            당신의 결과는 어쩌구~~
+          <div className={styles.question}>
+            <p className={styles.description}>
+            {`당신의 결과는 어쩌구~~`}
           </p>
+
+          <p className={styles.description}>
+            {`${id}점!`}
+          </p>
+
           </div>
           <div className={styles.answer}>
             <p>
@@ -146,4 +154,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default ResultPage;

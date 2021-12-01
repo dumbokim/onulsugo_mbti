@@ -8,13 +8,16 @@ import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const [page, setPage] = useState(0);
+  const [point, setPoint] = useState(0);
   const [refresh, setRefresh] = useState(true);
   const [first, setFirst] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     console.log('hi');
-  }, [first])
+    console.log(point);
+  }, [first, point])
+
 
   useEffect(() => {
     setRefresh(true);
@@ -48,16 +51,13 @@ const Home: NextPage = () => {
     from: {x:-70},
     to: {x:0},
     config:{duration: 500},
-    
   })
 
   const animation3 = useSpring({
     reset: refresh,
-
     from: {x:-70},
     to: {x:0},
     config:{duration: 700},
-    
   })
 
   const animation4 = useSpring({
@@ -65,11 +65,17 @@ const Home: NextPage = () => {
     from: {x:-70},
     to: {x:0},
     config:{duration: 900},
-    
   })
+  const setPoint1 = async () => {
+    page==1? setPoint(point+25) :( page==2 ? '': (page==3? setPoint(point+25): router.push(`/result/${point+25}`)));
+  }
 
-  const pageClick = () => {
-    page==1? setPage(2) :( page==2 ? setPage(3): (page==3? setPage(4): router.push('/result')));
+  const setPoint2 = async () => {
+    page==1? '' :( page==2 ? setPoint(point+25): (page==3? '': router.push(`/result/${point}`)));
+  }
+
+  const pageClick = async () => {
+    page==1? setPage(2) :( page==2 ? setPage(3): (page==3? setPage(4): 'router.push(`/result/${point}`'));
   }
 
   return (
@@ -118,11 +124,11 @@ const Home: NextPage = () => {
               <p className={styles.description}>이런 쓰레기는</p>
               <p className={styles.description}>어떻게 해야할까요?</p>
             </div>
-           
           </animated.div>
           <div className={styles.answer}>
             <animated.div
-              onClick={() => {
+              onClick={async () => {
+                setPoint1();
                 pageClick();
               }}
               className={styles.code}
@@ -134,6 +140,7 @@ const Home: NextPage = () => {
             </animated.div>
             <animated.div className={styles.code}
             onClick={() => {
+              setPoint2();
               pageClick();
             }}
             style={{
@@ -142,6 +149,7 @@ const Home: NextPage = () => {
             >2번째 답</animated.div>
             <animated.div className={styles.code}
             onClick={() => {
+              setPoint2();
               pageClick();
             }}
             style={{
@@ -150,6 +158,7 @@ const Home: NextPage = () => {
             >3번째 답</animated.div>
             <animated.div className={styles.code}
             onClick={() => {
+              setPoint2();
               pageClick();
             }}
             style={{
